@@ -31,6 +31,7 @@ import { TABLE_TRANSFORMATIONS_OWNER } from 'app/features/table/constants';
 import { dispatch } from 'app/store/store';
 
 import { DashboardSceneChangeTracker } from '../saving/DashboardSceneChangeTracker';
+import { PanelDataLayerSet } from '../scene/DashboardDataLayerSet';
 import { type LibraryPanelBehavior } from '../scene/LibraryPanelBehavior';
 import { UNCONFIGURED_PANEL_PLUGIN_ID } from '../scene/UnconfiguredPanel';
 import { DashboardGridItem } from '../scene/layout-default/DashboardGridItem';
@@ -336,6 +337,7 @@ export class PanelEditor extends SceneObjectBase<PanelEditorState> {
         panel.setState({
           $data: new SceneDataTransformer({
             $data: new SceneQueryRunner({
+              $data: new PanelDataLayerSet(),
               datasource: {
                 uid: ds,
               },
